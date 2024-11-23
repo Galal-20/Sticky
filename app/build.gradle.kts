@@ -1,8 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    kotlin("kapt")
-    id("com.google.dagger.hilt.android") version "2.52" // Use the latest version
+    id("com.google.dagger.hilt.android") version "2.52"
+    id("kotlin-kapt")
+
 
 
 }
@@ -46,6 +47,9 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
+    kapt {
+        correctErrorTypes = true
+    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -74,9 +78,14 @@ dependencies {
     // Hilt dependencies
     implementation("com.google.dagger:hilt-android:2.52")
     kapt("com.google.dagger:hilt-compiler:2.52")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0-alpha01")
+    kapt("androidx.hilt:hilt-compiler:1.1.0-alpha01")
+
 
     // Compose-specific Hilt dependencies
-    implementation("androidx.hilt:hilt-navigation-compose:1.1.0-alpha01")
+  /*  implementation("androidx.hilt:hilt-navigation-compose:1.1.0-alpha01")
+    kapt("androidx.hilt:hilt-compiler:1.1.0-alpha01")*/
+
 
     implementation ("androidx.room:room-runtime:2.6.0")
     kapt ("androidx.room:room-compiler:2.6.0")
@@ -87,17 +96,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
     //ViewModel
     implementation("androidx.lifecycle:lifecycle-runtime-compose-android:2.8.6")
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
 
-
-    //retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation("com.squareup:javapoet:1.13.0")
 
 
-    //coil for images
-    implementation("io.coil-kt:coil-compose:2.0.0")
+
 
 }

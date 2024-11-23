@@ -5,7 +5,9 @@ import androidx.room.Room
 import com.galal.sticky.feature_note.data.data_source.NoteDataBase
 import com.galal.sticky.feature_note.data.repository.NoteRepositoryImp
 import com.galal.sticky.feature_note.domain.repository.NoteRepository
+import com.galal.sticky.feature_note.domain.use_case.AddNote
 import com.galal.sticky.feature_note.domain.use_case.DeleteNote
+import com.galal.sticky.feature_note.domain.use_case.GetNote
 import com.galal.sticky.feature_note.domain.use_case.GetNotes
 import com.galal.sticky.feature_note.domain.use_case.NoteUseCases
 import dagger.Module
@@ -39,7 +41,9 @@ object AppModule {
     fun providerNoteUseCases(repository: NoteRepository): NoteUseCases{
         return NoteUseCases(
             getNotes = GetNotes(repository),
-            deleteNote = DeleteNote(repository)
+            deleteNote = DeleteNote(repository),
+            addNote = AddNote(repository),
+            getNote = GetNote(repository)
         )
     }
 }

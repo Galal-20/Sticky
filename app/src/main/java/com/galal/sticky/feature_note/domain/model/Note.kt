@@ -17,3 +17,6 @@ data class Note(
             .Blue, Color.Magenta)
     }
 }
+
+
+class  InvalidNoteException(message: String): Exception(message)
